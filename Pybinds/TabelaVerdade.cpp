@@ -79,3 +79,4 @@ const char* TabelaVerdade::ToVF(bool v)
 {
     return v ? "V" : "F";
 }
+
