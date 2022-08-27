@@ -75,8 +75,73 @@ pybind11::dict TabelaVerdade::TableBiCon()
     return v;
 }
 
+bool TabelaVerdade::Nor(bool a, bool b)
+{
+    return !(a || b);
+}
+
+pybind11::dict TabelaVerdade::TableNor()
+{
+    pybind11::dict v;
+
+    v["00"] = Nor(false, false);
+    v["01"] = Nor(false, true);
+    v["10"] = Nor(true, false);
+    v["11"] = Nor(true, true);
+}
+
+bool TabelaVerdade::Xor(bool a, bool b)
+{
+    return a != b;
+}
+
+pybind11::dict TabelaVerdade::TableXor()
+{
+    pybind11::dict v;
+
+    v["00"] = Nor(false, false);
+    v["01"] = Nor(false, true);
+    v["10"] = Nor(true, false);
+    v["11"] = Nor(true, true);
+}
+
 const char* TabelaVerdade::ToVF(bool v)
 {
     return v ? "V" : "F";
 }
 
+
+
+
+bool TabelaVerdade::GetBitFromInt(UINT32 INPUT, int N)
+{
+    auto result = (INPUT >> N) & 1;
+    return result;
+}
+int TabelaVerdade::powi(int base, unsigned int exp)
+{
+    int res = 1;
+    while (exp) {
+        if (exp & 1)
+            res *= base;
+        exp >>= 1;
+        base *= base;
+    }
+    return res;
+}
+void TabelaVerdade::TableDynamic(pybind11::function& callback, int n)
+{
+    UINT32 inicial = 0;
+    pybind11::list ls(n);
+    auto len_loop = powi(2, n);
+
+    for (size_t i = 0; i < len_loop; i++)
+    {
+        for (size_t i2 = 0; i2 < n; i2++)
+        {
+            ls[i2] = GetBitFromInt(inicial, i2);
+        }
+        callback(ls, n);
+        inicial++;
+    }
+}

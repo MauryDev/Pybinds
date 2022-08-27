@@ -10,38 +10,7 @@
 #include <pybind11/functional.h>
 namespace py = pybind11;
 
-bool GetBitFromInt(UINT32 INPUT,int N)
-{
-    auto result = (INPUT >> N) & 1;
-    return result;
-}
-int powi(int base, unsigned int exp)
-{
-    int res = 1;
-    while (exp) {
-        if (exp & 1)
-            res *= base;
-        exp >>= 1;
-        base *= base;
-    }
-    return res;
-}
-void TableDynamic(py::function& callback,int n)
-{
-    UINT32 inicial = 0;
-    py::list ls(n);
-    auto len_loop = powi(2, n);
 
-    for (size_t i = 0; i < len_loop; i++)
-    {
-        for (size_t i2 = 0; i2 < n; i2++)
-        {
-            ls[i2] = GetBitFromInt(inicial, i2);
-        }
-        callback(ls,n);
-        inicial++;
-    }
-}
 PYBIND11_EMBEDDED_MODULE(fast_math, m) {
     m.def("Not",TabelaVerdade::Not);
     m.def("And", TabelaVerdade::And);
@@ -53,8 +22,13 @@ PYBIND11_EMBEDDED_MODULE(fast_math, m) {
     m.def("TableOr", TabelaVerdade::TableOr);
     m.def("TableCon", TabelaVerdade::TableCon);
     m.def("TableBiCon", TabelaVerdade::TableBiCon);
-    m.def("TableDynamic", TableDynamic);
+    m.def("TableDynamic", TabelaVerdade::TableDynamic);
     m.def("ToVF", TabelaVerdade::ToVF);
+    m.def("Nor", TabelaVerdade::Nor);
+    m.def("Xor", TabelaVerdade::Xor);
+    m.def("TableXor", TabelaVerdade::TableXor);
+    m.def("TableNor", TabelaVerdade::TableNor);
+
 }
 
 std::string slurp(std::ifstream& in) {
