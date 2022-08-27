@@ -1,4 +1,5 @@
 import fast_math
+import timeit
 
 
 count_F = 0
@@ -44,3 +45,4 @@ print(f'Count F : {count_F}')
 
 print(f'Count V : {count_V}')
 
+timeit.timeit("[(a, b) for a in (1, 3, 5) for b in (2, 4, 6)]")

@@ -88,6 +88,7 @@ pybind11::dict TabelaVerdade::TableNor()
     v["01"] = Nor(false, true);
     v["10"] = Nor(true, false);
     v["11"] = Nor(true, true);
+    return v;
 }
 
 bool TabelaVerdade::Xor(bool a, bool b)
@@ -103,6 +104,7 @@ pybind11::dict TabelaVerdade::TableXor()
     v["01"] = Nor(false, true);
     v["10"] = Nor(true, false);
     v["11"] = Nor(true, true);
+    return v;
 }
 
 const char* TabelaVerdade::ToVF(bool v)
