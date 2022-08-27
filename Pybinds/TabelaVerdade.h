@@ -17,3 +17,4 @@ namespace TabelaVerdade
 	const char* ToVF(bool v);
 };
 
+

@@ -55,7 +55,6 @@ PYBIND11_EMBEDDED_MODULE(fast_math, m) {
     m.def("TableBiCon", TabelaVerdade::TableBiCon);
     m.def("TableDynamic", TableDynamic);
     m.def("ToVF", TabelaVerdade::ToVF);
-
 }
 
 std::string slurp(std::ifstream& in) {
