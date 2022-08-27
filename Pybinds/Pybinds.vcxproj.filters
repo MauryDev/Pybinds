@@ -18,8 +18,16 @@
     <ClCompile Include="Pybinds.cpp">
       <Filter>Arquivos de Origem</Filter>
     </ClCompile>
+    <ClCompile Include="TabelaVerdade.cpp">
+      <Filter>Arquivos de Origem</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Text Include="Code.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="TabelaVerdade.h">
+      <Filter>Arquivos de Cabeçalho</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

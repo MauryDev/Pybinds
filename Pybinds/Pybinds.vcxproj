@@ -152,9 +152,13 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Pybinds.cpp" />
+    <ClCompile Include="TabelaVerdade.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="Code.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="TabelaVerdade.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
